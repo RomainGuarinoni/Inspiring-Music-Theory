@@ -1,24 +1,13 @@
-# test
+# Mini jeux lecture de note
 
-## Project setup
-```
-npm install
-```
+Tous les fichiers sont dans **src/components/Minijeux.vue**
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## librairies utilisées : 
+1. Vexflow
+2. Vuejs
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## Choses à rajouter : 
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+1. Un chronomètre
+2. embellir l'interfac
+3. gérer le responsive
