@@ -1,0 +1,172 @@
+<template>
+  <div class="all">
+    <div class="testBox" :class="{hidden : finish}">
+      <h1>Test mini jeux </h1>
+      <div class="info">
+        <p>Votre score : {{score}} /8</p>
+        <p>Temps : {{time}} </p>
+      </div>
+      <div id="gameBox">
+
+      </div>
+      <div class="buttonBox">
+        <Button
+        @checkAnswer="scoreUpdate"
+        v-for="(item) in noteBase"
+        :key="item.value"
+        :value="item.value"
+        :note="item.note"
+        :index="index"
+        :notes="notes"
+        />
+      </div>
+    </div>
+    <div class="resultBox" :class="{hidden : !finish}">
+      <h1>bravo, tu as finis l'exercice</h1>
+      <h2>Voici tes résultats : </h2>
+      <div class="result">
+        <p>Score : {{score}} / 8 </p>
+        <p>temps : ...</p>
+      </div>
+      <p class ="comment" v-if="score>5" style="color:green;">Bravo, c'est un bon score</p>
+      <p class ="comment" v-else style="color:red;">Tu dois encore t'entrainer...</p>
+      
+    </div>
+  </div>
+</template>
+
+<script>
+import Vex from 'vexflow'
+import Button from './Button.vue'
+export default {
+  name: 'HelloWorld',
+  components : {
+    Button,
+  },
+  data(){
+    return{
+      notes : [],
+      noteBase: [{note : 'Do', value :'c/4'},
+    {note : 'Re', value :'d/4'},
+    {note : 'Mi', value :'e/4'},
+    {note : 'Fa', value :'f/4'},
+    {note : 'Sol', value :'g/4'},
+    {note : 'La', value :'a/4'},
+    {note : 'Si', value :'b/4'}],
+      score : 0,
+      index : 0,
+      finish : false,
+      time : "0:00:00:00"
+
+    }
+  },
+  created : function(){
+    let note = [{note : 'Do', value :'c/4'},
+    {note : 'Re', value :'d/4'},
+    {note : 'Mi', value :'e/4'},
+    {note : 'Fa', value :'f/4'},
+    {note : 'Sol', value :'g/4'},
+    {note : 'La', value :'a/4'},
+    {note : 'Si', value :'b/4'}];
+    for(let i =0;i<8;i++){
+      let number= Math.floor(Math.random() * 7); 
+      this.notes[i]=note[number];
+    }
+    console.log(this.notes)
+  },
+  mounted: function(){
+    
+    var part1=Vex.Flow;
+    var div = document.getElementById("gameBox");
+    var renderer = new part1.Renderer(div, part1.Renderer.Backends.SVG);
+    renderer.resize(1000,500); // Size the SVG
+    var context=renderer.getContext();
+    // on ajoute un context au renderer
+    var stave = new part1.Stave(60, 40, 400);//on dessinne la partition au position 10,40 avec une largeur de 400
+    stave.addClef("treble").addTimeSignature("4/4") //on, ajoute l'armure treble : clef de sol || bass : clef de fa
+    stave.setContext(context).draw();
+    var notes = [//ajouter des notes
+      new part1.StaveNote({clef: "treble", keys: [this.notes[0].value], duration: "q" }),
+      new part1.StaveNote({clef: "treble", keys: [this.notes[1].value], duration: "q" }),
+      new part1.StaveNote({clef: "treble", keys: [this.notes[2].value], duration: "q" }),
+      new part1.StaveNote({clef: "treble", keys: [this.notes[3].value], duration: "q" }),
+    ]
+    var voice = new part1.Voice({num_beats: 4,  beat_value: 4});
+    voice.addTickables(notes);
+    part1.Formatter.FormatAndDraw(context, stave, notes); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part
+    var part2=Vex.Flow;
+    var stave2= new part2.Stave(460,40,400);
+    stave2.setContext(context).draw();
+    var notes2 = [
+      new part2.StaveNote({clef: "treble", keys: [this.notes[4].value], duration: "q" }),
+      new part2.StaveNote({clef: "treble", keys: [this.notes[5].value], duration: "q" }),
+      new part2.StaveNote({clef: "treble", keys: [this.notes[6].value], duration: "q" }),
+      new part2.StaveNote({clef: "treble", keys: [this.notes[7].value], duration: "q" }),
+    ]
+    var voice2 = new part2.Voice({num_beats: 4,  beat_value: 4});
+    voice2.addTickables(notes);
+    part2.Formatter.FormatAndDraw(context, stave2, notes2);
+
+
+    /////////////Création du chronomètre////////////////
+  
+    },
+    methods:{
+      scoreUpdate(payload){
+        this.index++;
+        if(payload.result==true){
+          this.score++;
+        }
+        if(this.index==8){
+          this.finish=true;
+        }
+      }
+    }
+}
+</script>
+
+
+<style scoped>
+.comment{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.resultBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.result{
+  display: flex;
+  font-size: 1.2em;
+  justify-content: space-between;
+  width: 300px;
+}
+.hidden{
+  display:none;
+}
+h1{
+  text-align: center;
+}
+#gameBox{
+  height: 200px;
+  text-align: center;
+}
+#test{
+  color: red;
+}
+.info{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  
+}
+.info p {
+  font-size: 1.3em;
+  margin: 0 200px;
+}
+.buttonBox{
+  display: flex;
+  justify-content: center;
+}
+</style>
