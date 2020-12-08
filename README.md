@@ -22,7 +22,39 @@ Tous les fichiers sont dans **src/components/Minijeux.vue**
 
 ## Choses à rajouter :
 
-1. Un chronomètre (DONE)
-2. changer couleur de note : lire cette doc [doc](https://github.com/0xfe/vexflow/wiki/Coloring-&-Styling-Notes)
-3. embellir l'interfac
-4. gérer le responsive
+
+1. Un chronomètre
+2. embellir l'interfac
+3. gérer le responsive
+
+Voici comment gérter les changeemtns de couleur des notes :
+
+```javascript
+   new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[0].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[1].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[2].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[3].value],
+        duration: "q",
+      }),
+    ];
+    notes[2].setStyle({
+      fillStyle: "orange",
+      strokeStyle: "orange",
+    });
+
+```
+

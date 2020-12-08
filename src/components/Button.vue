@@ -3,7 +3,10 @@
     <button
       :class="{ greenColor: goodAnswer, redColor: badAnswer }"
       class="noteButton"
-      @click="check"
+      @click="
+        check();
+        colorUpdate();
+      "
     >
       {{ note }}
     </button>
@@ -43,6 +46,9 @@ export default {
         }, 500);
       }
       this.$emit("checkAnswer", payload);
+    },
+    colorUpdate() {
+      this.$emit("uptadeColor");
     },
   },
 };
