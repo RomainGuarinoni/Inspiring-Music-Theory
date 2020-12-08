@@ -22,6 +22,7 @@ Tous les fichiers sont dans **src/components/Minijeux.vue**
 
 ## Choses à rajouter :
 
-1. Un chronomètre
-2. embellir l'interfac
-3. gérer le responsive
+1. Un chronomètre (DONE)
+2. changer couleur de note : lire cette doc [doc](https://github.com/0xfe/vexflow/wiki/Coloring-&-Styling-Notes)
+3. embellir l'interfac
+4. gérer le responsive

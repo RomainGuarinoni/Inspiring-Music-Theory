@@ -32,18 +32,14 @@ export default {
       if (this.value == this.notes[this.index].value) {
         payload = { result: true };
         this.goodAnswer = true;
-        console.log(this.goodAnswer);
         setTimeout(() => {
           this.goodAnswer = false;
-          console.log(this.goodAnswer);
         }, 500);
       } else {
         payload = { result: false };
         this.badAnswer = true;
-        console.log(this.badAnswer);
         setTimeout(() => {
           this.badAnswer = false;
-          console.log(this.badAnswer);
         }, 500);
       }
       this.$emit("checkAnswer", payload);
@@ -54,7 +50,7 @@ export default {
 
 <style scoped>
 .noteButton {
-  margin: 20px;
+  margin-right: 20px;
   width: 70px;
   height: 30px;
   border-radius: 20px;

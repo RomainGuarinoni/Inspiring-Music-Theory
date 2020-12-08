@@ -7,6 +7,7 @@
         <p>Temps : {{ min }} min {{ sec }} sec</p>
       </div>
       <div id="gameBox"></div>
+      <!-- box for display the partition-->
       <div class="buttonBox">
         <Button
           @checkAnswer="scoreUpdate"
@@ -82,7 +83,6 @@ export default {
       let number = Math.floor(Math.random() * 7);
       this.notes[i] = note[number];
     }
-    console.log(this.notes);
   },
   mounted: function() {
     setInterval(() => {
@@ -95,10 +95,10 @@ export default {
     var part1 = Vex.Flow;
     var div = document.getElementById("gameBox");
     var renderer = new part1.Renderer(div, part1.Renderer.Backends.SVG);
-    renderer.resize(1000, 500); // Size the SVG
+    renderer.resize(1000, 500); // Size the SVG (width, height)
     var context = renderer.getContext();
     // on ajoute un context au renderer
-    var stave = new part1.Stave(60, 40, 400); //on dessinne la partition au position 10,40 avec une largeur de 400
+    var stave = new part1.Stave(60, 40, 400); //on dessinne la partition au position 10,40 avec une largeur de 400 !!!!!!revoir ca pour le responsive!!!!!!!
     stave.addClef("treble").addTimeSignature("4/4"); //on, ajoute l'armure treble : clef de sol || bass : clef de fa
     stave.setContext(context).draw();
     var notes = [
@@ -124,9 +124,10 @@ export default {
         duration: "q",
       }),
     ];
+    notes[0].setStyle({ fillStyle: "blue" });
     var voice = new part1.Voice({ num_beats: 4, beat_value: 4 });
     voice.addTickables(notes);
-    part1.Formatter.FormatAndDraw(context, stave, notes); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part
+    part1.Formatter.FormatAndDraw(context, stave, notes, false); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part
     var part2 = Vex.Flow;
     var stave2 = new part2.Stave(460, 40, 400);
     stave2.setContext(context).draw();
@@ -155,8 +156,6 @@ export default {
     var voice2 = new part2.Voice({ num_beats: 4, beat_value: 4 });
     voice2.addTickables(notes);
     part2.Formatter.FormatAndDraw(context, stave2, notes2);
-
-    /////////////Création du chronomètre////////////////
   },
   methods: {
     scoreUpdate(payload) {
@@ -176,7 +175,6 @@ export default {
       this.index = 0;
       this.sec = 0;
       this.min = 0;
-      console.log(this.finish);
     },
   },
 };
