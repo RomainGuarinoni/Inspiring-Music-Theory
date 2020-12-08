@@ -189,7 +189,7 @@ export default {
           duration: "q",
         }),
       ];
-      if (this.index >= 4) {
+      if (this.index >= 4 && this.index < 8) {
         notes2[this.index - 4].setStyle({
           fillStyle: "orange",
           strokeStyle: "orange",
