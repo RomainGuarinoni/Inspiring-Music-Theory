@@ -28,7 +28,7 @@ Tous les fichiers sont dans **src/components/Minijeux.vue**
 
 Voici comment gérter les changeemtns de couleur des notes :
 
-```|javascript
+```javascript
    new part1.StaveNote({
         clef: "treble",
         keys: [this.notes[0].value],
