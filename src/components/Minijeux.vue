@@ -124,6 +124,10 @@ export default {
         duration: "q",
       }),
     ];
+    notes[2].setStyle({
+      fillStyle: "orange",
+      strokeStyle: "orange",
+    });
     var voice = new part1.Voice({ num_beats: 4, beat_value: 4 });
     voice.addTickables(notes);
     part1.Formatter.FormatAndDraw(context, stave, notes); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part

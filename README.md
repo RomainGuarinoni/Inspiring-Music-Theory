@@ -25,3 +25,34 @@ Tous les fichiers sont dans **src/components/Minijeux.vue**
 1. Un chronomètre
 2. embellir l'interfac
 3. gérer le responsive
+
+Voici comment gérter les changeemtns de couleur des notes :
+
+```|javascript
+   new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[0].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[1].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[2].value],
+        duration: "q",
+      }),
+      new part1.StaveNote({
+        clef: "treble",
+        keys: [this.notes[3].value],
+        duration: "q",
+      }),
+    ];
+    notes[2].setStyle({
+      fillStyle: "orange",
+      strokeStyle: "orange",
+    });
+
+```
