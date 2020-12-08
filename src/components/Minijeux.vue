@@ -33,7 +33,7 @@
       <p class="comment" v-else style="color:red;">
         Tu dois encore t'entrainer...
       </p>
-      <router-link :to="{ name: 'jeux' }">Recommencer</router-link>
+      <button @click="again">Recommencer</button>
     </div>
   </div>
 </template>
@@ -170,11 +170,35 @@ export default {
         this.min_finish = this.min;
       }
     },
+    again() {
+      this.finish = false;
+      this.score = 0;
+      this.index = 0;
+      this.sec = 0;
+      this.min = 0;
+      console.log(this.finish);
+    },
   },
 };
 </script>
 
 <style scoped>
+button {
+  width: 150px;
+  height: 30px;
+  border-radius: 20px;
+  border: none;
+  background: rgba(27, 27, 27, 0.726);
+  color: white;
+  cursor: pointer;
+  transition: all ease 200ms;
+  outline: none;
+}
+button:hover {
+  transform: scale(1.2);
+  font-weight: bold;
+  border: 2px solid black;
+}
 .comment {
   font-size: 1.5em;
   font-weight: bold;
