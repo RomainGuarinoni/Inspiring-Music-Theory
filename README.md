@@ -23,7 +23,7 @@ Tous les fichiers sont dans **src/components**
 ## Choses à rajouter :
 
 - [x] Un chronomètre
-- [ ]embellir l'interface
+- [ ] embellir l'interface
 - [ ] gérer le responsive
 - [x] Intégrer un curseur
 
