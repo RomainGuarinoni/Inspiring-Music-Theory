@@ -25,7 +25,7 @@
       <h2>Voici tes résultats :</h2>
       <div class="result">
         <p>Score : {{ score }} / 8</p>
-        <p>temps : ...</p>
+        <p>temps : {{ min_finish }} min {{ sec_finish }} sec</p>
       </div>
       <p class="comment" v-if="score > 5" style="color:green;">
         Bravo, c'est un bon score
@@ -33,6 +33,7 @@
       <p class="comment" v-else style="color:red;">
         Tu dois encore t'entrainer...
       </p>
+      <router-link :to="{ name: 'jeux' }">Recommencer</router-link>
     </div>
   </div>
 </template>
@@ -63,6 +64,8 @@ export default {
       finish: false,
       sec: 0,
       min: 0,
+      sec_finish: 0,
+      min_finish: 0,
     };
   },
   created: function() {
@@ -163,6 +166,8 @@ export default {
       }
       if (this.index == 8) {
         this.finish = true;
+        this.sec_finish = this.sec;
+        this.min_finish = this.min;
       }
     },
   },
