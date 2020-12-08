@@ -23,7 +23,6 @@
       </div>
 
       <div class="buttonBox" v-show="begin">
-
         <Button
           @checkAnswer="scoreUpdate"
           @uptadeColor="removeNode"
@@ -101,7 +100,7 @@ export default {
       let number = Math.floor(Math.random() * 7);
       this.notes[i] = note[number];
     }
-
+  },
   methods: {
     chrono() {
       setInterval(() => {
