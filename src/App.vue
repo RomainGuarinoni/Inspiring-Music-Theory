@@ -1,18 +1,16 @@
 <template>
   <div id="app">
-    <minijeux />
+    <router-link :to="{ name: 'jeux' }">Jeux</router-link>
+    <router-link :to="{ name: 'random' }">Random</router-link>
+
+    <router-view />
   </div>
 </template>
 
 <script>
-import Minijeux from './components/Minijeux.vue'
-
 export default {
-  name: 'App',
-  components: {
-    Minijeux
-  }
-}
+  name: "App",
+};
 </script>
 
 <style>

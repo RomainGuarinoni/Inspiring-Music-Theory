@@ -10,7 +10,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "vexflow": "^3.0.9",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -34,7 +35,7 @@
       "parser": "babel-eslint"
     },
     "rules": {
-      "no-unused-vars": "off" 
+      "no-unused-vars": "off"
     }
   },
   "browserslist": [

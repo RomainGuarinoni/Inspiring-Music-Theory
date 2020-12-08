@@ -4,7 +4,7 @@
       <h1>Test mini jeux</h1>
       <div class="info">
         <p>Votre score : {{ score }} /8</p>
-        <p>Temps : {{ time }}</p>
+        <p>Temps : {{ min }} min {{ sec }} sec</p>
       </div>
       <div id="gameBox"></div>
       <div class="buttonBox">
@@ -61,7 +61,8 @@ export default {
       score: 0,
       index: 0,
       finish: false,
-      time: "0:00:00:00",
+      sec: 0,
+      min: 0,
     };
   },
   created: function() {
@@ -81,6 +82,13 @@ export default {
     console.log(this.notes);
   },
   mounted: function() {
+    setInterval(() => {
+      if (this.sec == 59) {
+        this.sec = 0;
+        this.min++;
+      }
+      this.sec++;
+    }, 1000);
     var part1 = Vex.Flow;
     var div = document.getElementById("gameBox");
     var renderer = new part1.Renderer(div, part1.Renderer.Backends.SVG);
