@@ -3,7 +3,10 @@
     <button
       :class="{ greenColor: goodAnswer, redColor: badAnswer }"
       class="noteButton"
-      @click="check"
+      @click="
+        check();
+        colorUpdate();
+      "
     >
       {{ note }}
     </button>
@@ -32,21 +35,20 @@ export default {
       if (this.value == this.notes[this.index].value) {
         payload = { result: true };
         this.goodAnswer = true;
-        console.log(this.goodAnswer);
         setTimeout(() => {
           this.goodAnswer = false;
-          console.log(this.goodAnswer);
         }, 500);
       } else {
         payload = { result: false };
         this.badAnswer = true;
-        console.log(this.badAnswer);
         setTimeout(() => {
           this.badAnswer = false;
-          console.log(this.badAnswer);
         }, 500);
       }
       this.$emit("checkAnswer", payload);
+    },
+    colorUpdate() {
+      this.$emit("uptadeColor");
     },
   },
 };
