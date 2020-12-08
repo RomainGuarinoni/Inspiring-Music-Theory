@@ -116,10 +116,12 @@ export default {
       node.remove();
       var newNode = document.getElementById("gameBoxInstance");
       newNode.innerHTML = '<div id="gameBox"></div>';
+      var div = document.getElementById("gameBox");
+      div.style = "height: 200px;";
+      div.style.textAlign = "center";
       this.display();
     },
     display() {
-      console.log("begion");
       this.begin = true;
       var part1 = Vex.Flow;
       var div = document.getElementById("gameBox");
@@ -188,7 +190,7 @@ export default {
         }),
       ];
       if (this.index >= 4) {
-        notes[this.index].setStyle({
+        notes2[this.index - 4].setStyle({
           fillStyle: "orange",
           strokeStyle: "orange",
         });
