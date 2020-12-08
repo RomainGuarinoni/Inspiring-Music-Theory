@@ -56,7 +56,7 @@ export default {
 
 <style scoped>
 .noteButton {
-  margin: 20px;
+  margin-right: 20px;
   width: 70px;
   height: 30px;
   border-radius: 20px;

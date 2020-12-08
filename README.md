@@ -22,6 +22,7 @@ Tous les fichiers sont dans **src/components/Minijeux.vue**
 
 ## Choses à rajouter :
 
+
 1. Un chronomètre
 2. embellir l'interfac
 3. gérer le responsive
@@ -56,3 +57,4 @@ Voici comment gérter les changeemtns de couleur des notes :
     });
 
 ```
+

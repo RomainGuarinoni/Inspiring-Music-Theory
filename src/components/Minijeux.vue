@@ -6,6 +6,7 @@
         <p>Votre score : {{ score }} /8</p>
         <p>Temps : {{ min }} min {{ sec }} sec</p>
       </div>
+
       <div class="begin">
         <button
           v-show="!begin"
@@ -22,6 +23,7 @@
       </div>
 
       <div class="buttonBox" v-show="begin">
+
         <Button
           @checkAnswer="scoreUpdate"
           @uptadeColor="removeNode"
@@ -99,7 +101,6 @@ export default {
       let number = Math.floor(Math.random() * 7);
       this.notes[i] = note[number];
     }
-  },
 
   methods: {
     chrono() {
@@ -218,7 +219,6 @@ export default {
       this.index = 0;
       this.sec = 0;
       this.min = 0;
-      console.log(this.finish);
     },
   },
 };
