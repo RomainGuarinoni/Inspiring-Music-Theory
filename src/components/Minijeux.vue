@@ -25,7 +25,6 @@
       <div class="buttonBox" v-show="begin">
         <Button
           @checkAnswer="scoreUpdate"
-          @uptadeColor="removeNode"
           @click="display"
           v-for="(item, id) in noteBase"
           :key="item.value"
@@ -76,6 +75,7 @@ export default {
         { note: "La", value: "a/4" },
         { note: "Si", value: "b/4" },
       ],
+      noteResult: [],
       score: 0,
       begin: false,
       index: 0,
@@ -156,10 +156,29 @@ export default {
         }),
       ];
       if (this.index < 4) {
+        // placement du curseur dans la première partie de la partition ( les 4 premieres notes)
         notes[this.index].setStyle({
           fillStyle: "orange",
           strokeStyle: "orange",
         });
+      }
+      if (this.noteResult.length >= 1) {
+        // changement de couleur des notes précédentes en fonction du résultat sur la premièree partie de la partition
+        if (this.noteResult.length < 4) {
+          for (let i = 0; i < this.noteResult.length; i++) {
+            notes[i].setStyle({
+              fillStyle: this.noteResult[i],
+              strokeStyle: this.noteResult[i],
+            });
+          }
+        } else {
+          for (let i = 0; i < 4; i++) {
+            notes[i].setStyle({
+              fillStyle: this.noteResult[i],
+              strokeStyle: this.noteResult[i],
+            });
+          }
+        }
       }
       var voice = new part1.Voice({ num_beats: 4, beat_value: 4 });
       voice.addTickables(notes);
@@ -190,27 +209,41 @@ export default {
         }),
       ];
       if (this.index >= 4 && this.index < 8) {
+        // placement du curseur pour la deuxième partie de la partition
         notes2[this.index - 4].setStyle({
           fillStyle: "orange",
           strokeStyle: "orange",
         });
       }
+      if (this.noteResult.length >= 5 && this.index < 8) {
+        console.log("pass");
+        // changement couleur notes precedentes deuxieme partie de la partition
+        for (let i = 4; i < this.noteResult.length; i++) {
+          notes2[i - 4].setStyle({
+            fillStyle: this.noteResult[i],
+            strokeStyle: this.noteResult[i],
+          });
+        }
+      }
 
       var voice2 = new part2.Voice({ num_beats: 4, beat_value: 4 });
       voice2.addTickables(notes);
       part2.Formatter.FormatAndDraw(context, stave2, notes2);
-      /////////////Création du chronomètre////////////////
     },
     scoreUpdate(payload) {
       this.index++;
       if (payload.result) {
         this.score++;
+        this.noteResult.push("green");
+      } else {
+        this.noteResult.push("red");
       }
       if (this.index == 8) {
         this.finish = true;
         this.sec_finish = this.sec;
         this.min_finish = this.min;
       }
+      this.removeNode();
     },
     again() {
       this.finish = false;
@@ -218,6 +251,9 @@ export default {
       this.index = 0;
       this.sec = 0;
       this.min = 0;
+      this.noteResult = [];
+      this.removeNode();
+      console.log(this.noteResult);
     },
   },
 };
