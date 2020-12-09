@@ -71,7 +71,7 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
 - removeNode()
 
   Fonction qui permet de supprimer du DOM la div qui contient la partition
-  (<div id="gameBox">) et en recrée une nouvelle dans laquelle la partition mis à jour est redessiné en fonction de la réponse du joueur (Avancer le curseur, colorié les notes précédente selon la reponse).
+  (`div id="gameBox"`) et en recrée une nouvelle dans laquelle la partition mis à jour est redessiné en fonction de la réponse du joueur (Avancer le curseur, colorié les notes précédente selon la reponse).
 
   Cette fonction est appelée à chaque réponse du joueur et appelle ensuite la fonction display().
 
@@ -108,7 +108,7 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
 
 - scoreUpdate()
 
-  Permet de mettre à jour le score du joueur selon sa réponse et permet également de stocké dans le tableau <noteResult> les réponse précédentes pour pouvoir colorier ensuite les notes
+  Permet de mettre à jour le score du joueur selon sa réponse et permet également de stocké dans le tableau `noteResult` les réponse précédentes pour pouvoir colorier ensuite les notes
 
 - again()
 
