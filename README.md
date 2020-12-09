@@ -53,6 +53,7 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
   ```
 
 - chrono()
+
   Permet de d'actualiser le chronomètre tout au long du jeux. C'est une fonction asynchrone qui est appelé une fois a la création du jeux :
 
   ```javascript
@@ -68,6 +69,7 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
   ```
 
 - removeNode()
+
   Fonction qui permet de supprimer du DOM la div qui contient la partition
   (<div id="gameBox">) et en recrée une nouvelle dans laquelle la partition mis à jour est redessiné en fonction de la réponse du joueur (Avancer le curseur, colorié les notes précédente selon la reponse).
 
@@ -104,10 +106,13 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
   ```
 
 - scoreUpdate()
+
   Permet de mettre à jour le score du joueur selon sa réponse et permet également de stocké dans le tableau <noteResult> les réponse précédentes pour pouvoir colorier ensuite les notes
 
 - again()
+
   Fonction appelée lorsque le jeux est finis et que le joueur veut recommencer. Permet de remmettre toutes les variables à 0.
+
   ```javascript
      again() {
       this.finish = false;
