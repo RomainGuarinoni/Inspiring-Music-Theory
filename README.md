@@ -76,6 +76,7 @@ La librairies [VexFlow](https://github.com/0xfe/vexflow) permet de créer la par
   Cette fonction est appelée à chaque réponse du joueur et appelle ensuite la fonction display().
 
 - display()
+
   Fonction qui permet de dessiner la partition de musique, ainsi que les couleurs des différentes notes. Cette fonction est appelé a chaque fois que le joueur clique sur un bouton. Le curseur (_note orange_) se déplace à la note suivante, et les notes précédentes sont coloriés selon le résultat du joueur ( Rouge si il s'est trompé, vert sinon)
 
   Voici comment le curseur change de place sur la deuxième partie de la partition :
