@@ -139,5 +139,5 @@ Voici les différents points à implémenter pour finaliser le jeux
 
 N'hésitez pas à me contacter pour suggérer d'autre améliorations :
 
-- mail : romain.guar01@gmail.com || romain.guarinoni@eetu.imt-lille-douai.fr
+- mail : romain.guar01@gmail.com || romain.guarinoni@etu.imt-lille-douai.fr
 - [Linkedin](https://www.linkedin.com/in/romain-guarinoni-535445189/)
