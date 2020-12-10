@@ -1,6 +1,8 @@
 # Inspiring Music Theory - Lecture de note
 
-Le premier jeux du projet : Un jeux de **lecture de note** développé avec Vue et Vexflow
+Le premier jeux du projet : Un jeux de **lecture de note** développé avec Vue et Vexflow.
+
+Vous trouverez le code source du jeux dans src/components
 
 ## Table des matières
 
