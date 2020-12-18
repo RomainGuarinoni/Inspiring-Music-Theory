@@ -6,12 +6,9 @@
         <div class="Select">
           <p>Niveau :</p>
           <select name="level" id="level" v-model="gameLevel">
-            <option
-              v-for="level in level"
-              :key="level.diff"
-              :value="level.note"
-              >{{ level.diff }}</option
-            >
+            <option v-for="level in level" :key="level.diff" :value="level">{{
+              level.diff
+            }}</option>
           </select>
         </div>
         <div class="Select">

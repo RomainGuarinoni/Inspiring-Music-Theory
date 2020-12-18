@@ -1,6 +1,7 @@
 <template>
   <div class="all">
     <div class="testBox" :class="{ hidden: finish }">
+      <h1>{{ level.diff }}</h1>
       <div class="info">
         <p>Votre score : {{ score }} /8</p>
         <p>Temps : {{ min }} min {{ sec }} sec</p>
@@ -52,13 +53,13 @@ export default {
   },
   props: {
     gameKey: String,
-    level: Array,
+    level: Object,
   },
   data() {
     return {
       switchValue: false,
       notes: [],
-      noteBase: this.level,
+      noteBase: this.level.note,
       noteResult: [],
       score: 0,
       begin: false,
