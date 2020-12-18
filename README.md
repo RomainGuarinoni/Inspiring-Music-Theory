@@ -1,6 +1,8 @@
 # Inspiring Music Theory - Lecture de note
 
-Le premier jeux du projet : Un jeux de **lecture de note** développé avec Vue et Vexflow
+Le premier jeux du projet : Un jeux de **lecture de note** développé avec Vue et Vexflow.
+
+Vous trouverez le code source du jeux dans src/components
 
 ## Table des matières
 
@@ -139,5 +141,5 @@ Voici les différents points à implémenter pour finaliser le jeux
 
 N'hésitez pas à me contacter pour suggérer d'autre améliorations :
 
-- mail : romain.guar01@gmail.com || romain.guarinoni@eetu.imt-lille-douai.fr
+- mail : romain.guar01@gmail.com || romain.guarinoni@etu.imt-lille-douai.fr
 - [Linkedin](https://www.linkedin.com/in/romain-guarinoni-535445189/)
