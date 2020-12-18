@@ -1,28 +1,16 @@
 <template>
   <div class="all">
     <div class="testBox" :class="{ hidden: finish }">
-      <h1>Test mini jeux</h1>
       <div class="info">
         <p>Votre score : {{ score }} /8</p>
         <p>Temps : {{ min }} min {{ sec }} sec</p>
       </div>
 
-      <div class="begin">
-        <button
-          v-show="!begin"
-          @click="
-            chrono();
-            display();
-          "
-        >
-          Begin
-        </button>
-      </div>
       <div id="gameBoxInstance">
         <div id="gameBox"></div>
       </div>
 
-      <div class="buttonBox" v-show="begin">
+      <div class="buttonBox">
         <Button
           @checkAnswer="scoreUpdate"
           @click="display"
@@ -62,19 +50,15 @@ export default {
   components: {
     Button,
   },
+  props: {
+    gameKey: String,
+    level: Array,
+  },
   data() {
     return {
       switchValue: false,
       notes: [],
-      noteBase: [
-        { note: "Do", value: "c/4" },
-        { note: "Re", value: "d/4" },
-        { note: "Mi", value: "e/4" },
-        { note: "Fa", value: "f/4" },
-        { note: "Sol", value: "g/4" },
-        { note: "La", value: "a/4" },
-        { note: "Si", value: "b/4" },
-      ],
+      noteBase: this.level,
       noteResult: [],
       score: 0,
       begin: false,
@@ -87,19 +71,17 @@ export default {
     };
   },
   created: function() {
-    let note = [
-      { note: "Do", value: "c/4" },
-      { note: "Re", value: "d/4" },
-      { note: "Mi", value: "e/4" },
-      { note: "Fa", value: "f/4" },
-      { note: "Sol", value: "g/4" },
-      { note: "La", value: "a/4" },
-      { note: "Si", value: "b/4" },
-    ];
+    let note = this.noteBase;
     for (let i = 0; i < 8; i++) {
-      let number = Math.floor(Math.random() * 7);
+      let number = Math.floor(Math.random() * this.noteBase.length);
       this.notes[i] = note[number];
     }
+    console.log(this.notes);
+  },
+  mounted: function() {
+    console.log("begin");
+    this.display();
+    this.chrono();
   },
   methods: {
     chrono() {
@@ -122,7 +104,6 @@ export default {
       this.display();
     },
     display() {
-      this.begin = true;
       var part1 = Vex.Flow;
       var div = document.getElementById("gameBox");
       var renderer = new part1.Renderer(div, part1.Renderer.Backends.SVG);
@@ -130,7 +111,7 @@ export default {
       var context = renderer.getContext();
       // on ajoute un context au renderer
       var stave = new part1.Stave(60, 40, 400); //on dessinne la partition au position 10,40 avec une largeur de 400
-      stave.addClef("treble").addTimeSignature("4/4"); //on, ajoute l'armure treble : clef de sol || bass : clef de fa
+      stave.addClef(this.gameKey).addTimeSignature("4/4"); //on, ajoute l'armure treble : clef de sol || bass : clef de fa
       stave.setContext(context).draw();
       var notes = [
         //ajouter des notes
@@ -185,6 +166,8 @@ export default {
       part1.Formatter.FormatAndDraw(context, stave, notes); //formater les notes pour qu'elle soient a la bonne place et tiout surt la part
       var part2 = Vex.Flow;
       var stave2 = new part2.Stave(460, 40, 400);
+      stave2.mode = part2.Voice.Mode.FULL;
+      stave2.setEndBarType(part2.Barline.type.End);
       stave2.setContext(context).draw();
       var notes2 = [
         new part2.StaveNote({
@@ -253,7 +236,6 @@ export default {
       this.min = 0;
       this.noteResult = [];
       this.removeNode();
-      console.log(this.noteResult);
     },
   },
 };
@@ -320,5 +302,11 @@ h1 {
 .buttonBox {
   display: flex;
   justify-content: center;
+}
+.all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
 </style>
